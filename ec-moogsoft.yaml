@@ -1,0 +1,35 @@
+---
+# This block refers to auto help generation
+help:
+  title: Electric Flow integration for Moogsoft
+  description: |
+    This plugin blah blah balh
+  links:
+    - some link
+  hasConfig: true
+procedures:
+  - name: Get System Status
+    stepName: Get System Status
+    description: blah blah
+    endpoint: '#{{endpoint}}/#{{collection}}/v1/getSystemStatus'
+    #  #{{instance}} means that "instance" will ba taken from config
+    # #{repository} will be taken from the procedure parameters
+    method: GET
+    # HTTP method
+    hasConfig: true
+     # a field for configuration name will be added to the form
+    attachCredentials: true
+     # credentials will be attached to the procedure
+    basicAuth: true
+     # credentials will be turned into basic auth header
+    # if no credentials found, the procedure won't fail, the request will be made without credentials
+
+    # The result will be saved in this property
+    resultProperty:
+      show: true
+      # Selectbox with formats will appear
+      format:
+        - json
+        - propertySheet
+      default: /myJob/systemStatus
+    # parameters:

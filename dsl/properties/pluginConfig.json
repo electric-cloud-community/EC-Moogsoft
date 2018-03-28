@@ -1,0 +1,23 @@
+{
+   "options" : null,
+   "Get System Status" : {
+      "description" : "blah blah",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/v1/getSystemStatus",
+      "basicAuth" : "true",
+      "parameters" : [],
+      "stepName" : "Get System Status",
+      "hasConfig" : "true",
+      "attachCredentials" : "true",
+      "resultProperty" : {
+         "default" : "/myJob/systemStatus",
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ]
+      },
+      "name" : "Get System Status",
+      "fields" : []
+   }
+}
