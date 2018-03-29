@@ -2,7 +2,7 @@
   <key>EC-Moogsoft</key>
   <label>EC-Moogsoft</label>
   <version>1.0.0</version>
-  <author>Your name or company name</author>
+  <author>Electric Cloud</author>
   <authorUrl>Your company support url or email</authorUrl>
   <category>Utilities</category>
   <commander-version min="6.0" />

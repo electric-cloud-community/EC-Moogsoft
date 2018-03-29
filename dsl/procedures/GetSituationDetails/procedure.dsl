@@ -1,11 +1,11 @@
-procedure 'Get System Status', description: 'Performs a GET request that returns current system status information for all processes', { // [PROCEDURE]
+procedure 'Get Situation Details', description: 'A GET request that returns the details of a specified Situation', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
-    step 'Get System Status',
+    step 'Get Situation Details',
         command: """
 \$[/myProject/scripts/preamble]
 use EC::RESTPlugin;
-EC::RESTPlugin->new->run_step('Get System Status');
+EC::RESTPlugin->new->run_step('Get Situation Details');
 """,
         errorHandling: 'failProcedure',
         exclusiveMode: 'none',

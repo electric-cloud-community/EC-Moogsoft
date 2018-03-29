@@ -1,23 +1,311 @@
 {
-   "options" : null,
-   "Get System Status" : {
-      "description" : "blah blah",
-      "method" : "GET",
-      "endpoint" : "#{{endpoint}}/#{{collection}}/v1/getSystemStatus",
-      "basicAuth" : "true",
-      "parameters" : [],
-      "stepName" : "Get System Status",
-      "hasConfig" : "true",
-      "attachCredentials" : "true",
+   "Get Alert Details" : {
       "resultProperty" : {
-         "default" : "/myJob/systemStatus",
          "show" : "true",
          "format" : [
             "json",
             "propertySheet"
-         ]
+         ],
+         "default" : "/myJob/AlertDetails"
+      },
+      "name" : "Get Alert Details",
+      "description" : "A GET request that returns details (such as Description, Severity, etc.) of a specified Alert.",
+      "stepName" : "Get Alert Details",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The Alert Id.",
+            "label" : "Alert Id",
+            "type" : "entry",
+            "property" : "alert_id"
+         }
+      ],
+      "fields" : [
+         "alert_id"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getAlertDetails?alert_id=#{alert_id}",
+      "attachCredentials" : "true"
+   },
+   "options" : null,
+   "Get System Summary" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/systemSummary"
+      },
+      "name" : "Get System Summary",
+      "description" : "A GET request that returns a summary of current Alerts and Situations in Moogsoft AIOps.",
+      "stepName" : "Get System Summary",
+      "parameters" : [],
+      "fields" : [],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSystemSummary",
+      "attachCredentials" : "true"
+   },
+   "Get Situation Description" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/SituationDescription"
+      },
+      "name" : "Get Situation Description",
+      "description" : "A GET request that returns the description for a specified Situation.",
+      "stepName" : "Get Situation Description",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The Situation Id.",
+            "label" : "Situation Id",
+            "type" : "entry",
+            "property" : "sitn_id"
+         }
+      ],
+      "fields" : [
+         "sitn_id"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSituationDescription?sitn_id=#{sitn_id}",
+      "attachCredentials" : "true"
+   },
+   "Get Alert Ids" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/AlertIds"
+      },
+      "name" : "Get Alert Ids",
+      "description" : "A GET request that returns the total number of Alerts, and a list of their Alert IDs for a specified Alert filter and a limit.",
+      "stepName" : "Get Alert Ids",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The max number of alert ids returned.",
+            "label" : "Limit",
+            "type" : "entry",
+            "property" : "limit"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Use either a JSON or a SQL like query. For example  severity = 0, would get all the alerts whose severity = 0.",
+            "label" : "Query",
+            "type" : "entry",
+            "property" : "query"
+         }
+      ],
+      "fields" : [
+         "limit",
+         "query"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getAlertIds?limit=#{limit}&query=#{query}",
+      "attachCredentials" : "true"
+   },
+   "Get Situation Ids" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/SituationIds"
+      },
+      "name" : "Get Situation Ids",
+      "description" : "A GET request that that returns the total number of Situations, and a list of their Situation IDs for a specified situation filter and a limit.",
+      "stepName" : "Get Situation Ids",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The max number of situation ids returned.",
+            "label" : "Limit",
+            "type" : "entry",
+            "property" : "limit"
+         },
+         {
+            "required" : "1",
+            "documentation" : "Use either a JSON or a SQL like query. For example  description = 'Web Situation' would get all Situations with that description as classified by the Cloud Team.",
+            "label" : "Query",
+            "type" : "entry",
+            "property" : "query"
+         }
+      ],
+      "fields" : [
+         "limit",
+         "query"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSituationIds?limit=#{limit}&query=#{query}",
+      "attachCredentials" : "true"
+   },
+   "Get Situation Details" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/SituationDetails"
+      },
+      "name" : "Get Situation Details",
+      "description" : "A GET request that returns the details of a specified Situation.",
+      "stepName" : "Get Situation Details",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The Situation Id.",
+            "label" : "Situation Id",
+            "type" : "entry",
+            "property" : "sitn_id"
+         }
+      ],
+      "fields" : [
+         "sitn_id"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSituationDetails?sitn_id=#{sitn_id}",
+      "attachCredentials" : "true"
+   },
+   "Get Situation Hosts" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/SituationHosts"
+      },
+      "name" : "Get Situation Hosts",
+      "description" : "A GET request that returns a list of host names for a specified Situation, either for all the Alerts in the Situation or just for the unique Alerts.Hosts are the names (defined in the alerts.source field in the database) for the sources of Events.",
+      "stepName" : "Get Situation Hosts",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The Situation Id for which the Alert Ids are being requested.",
+            "label" : "Situation Id",
+            "type" : "entry",
+            "property" : "sitn_id"
+         },
+         {
+            "checkedValue" : "true",
+            "uncheckedValue" : "false",
+            "default" : "false",
+            "required" : "0",
+            "documentation" : "Set this to true to get only Alerts unique to the Situation, else use all Alerts in the Situation.",
+            "type" : "checkbox",
+            "label" : "Unique Alerts Only",
+            "property" : "for_unique_alerts"
+         }
+      ],
+      "fields" : [
+         "sitn_id",
+         "for_unique_alerts"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSituationHosts?sitn_id=#{sitn_id}&for_unique_alerts=#{for_unique_alerts}",
+      "attachCredentials" : "true"
+   },
+   "Get System Status" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/systemStatus"
       },
       "name" : "Get System Status",
-      "fields" : []
+      "description" : "Performs a GET request that returns current system status information for all processes.",
+      "stepName" : "Get System Status",
+      "parameters" : [],
+      "fields" : [],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSystemStatus",
+      "attachCredentials" : "true"
+   },
+   "Get Situation Alert Ids" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/SituationAlertIds"
+      },
+      "name" : "Get Situation Alert Ids",
+      "description" : "A GET request that returns the total number of Alerts, and a list of their Alert IDs for a specified Situation. This can be either all Alerts or just those Alerts unique to the Situation.",
+      "stepName" : "Get Situation Alert Ids",
+      "parameters" : [
+         {
+            "required" : "1",
+            "documentation" : "The Situation Id for which the Alert Ids are being requested.",
+            "label" : "Situation Id",
+            "type" : "entry",
+            "property" : "sitn_id"
+         },
+         {
+            "checkedValue" : "true",
+            "uncheckedValue" : "false",
+            "default" : "false",
+            "required" : "0",
+            "documentation" : "Set this to true to get only Alerts unique to the Situation, else get all Alerts in the Situation.",
+            "type" : "checkbox",
+            "label" : "Unique Alerts Only",
+            "property" : "for_unique_alerts"
+         }
+      ],
+      "fields" : [
+         "sitn_id",
+         "for_unique_alerts"
+      ],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getSituationAlertIds?sitn_id=#{sitn_id}&for_unique_alerts=#{for_unique_alerts}",
+      "attachCredentials" : "true"
+   },
+   "Get Active Situation Ids" : {
+      "resultProperty" : {
+         "show" : "true",
+         "format" : [
+            "json",
+            "propertySheet"
+         ],
+         "default" : "/myJob/ActiveSituationIds"
+      },
+      "name" : "Get Active Situation Ids",
+      "description" : "A GET request that returns the total number of active Situations, and a list of their Situation IDs. Active Situations are those that are not Closed, Resolved or Dormant.",
+      "stepName" : "Get Active Situation Ids",
+      "parameters" : [],
+      "fields" : [],
+      "hasConfig" : "true",
+      "basicAuth" : "true",
+      "method" : "GET",
+      "endpoint" : "#{{endpoint}}/#{{collection}}/getActiveSituationIds",
+      "attachCredentials" : "true"
    }
 }
