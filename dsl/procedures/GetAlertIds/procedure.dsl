@@ -1,11 +1,11 @@
-procedure 'Get System Status', description: 'Performs a GET request that returns current system status information for all processes', { // [PROCEDURE]
+procedure 'Get Alert Ids', description: 'A GET request that returns the total number of Alerts, and a list of their Alert IDs for a specified Alert filter and a limit', { // [PROCEDURE]
     // [REST Plugin Wizard step]
 
-    step 'Get System Status',
+    step 'Get Alert Ids',
         command: """
 \$[/myProject/scripts/preamble]
 use EC::RESTPlugin;
-EC::RESTPlugin->new->run_step('Get System Status');
+EC::RESTPlugin->new->run_step('Get Alert Ids');
 """,
         errorHandling: 'failProcedure',
         exclusiveMode: 'none',

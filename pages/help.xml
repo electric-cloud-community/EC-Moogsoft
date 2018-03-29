@@ -12,18 +12,28 @@
         <h1>@PLUGIN_KEY@</h1>
         <p>Plugin Version @PLUGIN_VERSION@</p>
         <hr style="margin-left: -10px; margin-top: 10px; height: 1px; width: 100%; color: #5981BD;" noshade="noshade" />
-        <p>Revised on <!-- REVISION DATE BEGIN -->March 28, 2018<!-- REVISION DATE END --></p>
+        <p>Revised on <!-- REVISION DATE BEGIN -->March 29, 2018<!-- REVISION DATE END --></p>
         <p>
-            <!-- DESCRIPTION BEGIN -->This plugin blah blah balh
+            <!-- DESCRIPTION BEGIN -->This plugin implements the Moosgsoft GET Graze APIs that can be used in 
+surfacing Alerts and Situations stored in a Moogsoft AIOPS system. 
 <!-- DESCRIPTION END -->
         </p>
         <h2>Links</h2>
         <!-- LINKS BEGIN -->
-<a href="some link" target="_blank">some link</a>
+<a href="https://docs.moogsoft.com/display/060102/Graze+API" target="_blank">https://docs.moogsoft.com/display/060102/Graze+API</a>
 <!-- LINKS END -->
         <h1>Contents</h1>
         <ul>
-        <!-- TOC BEGIN --><li><a href="#GetSystemStatus">Get System Status</a></li><!-- TOC END -->
+        <!-- TOC BEGIN --><li><a href="#GetSystemStatus">Get System Status</a></li>
+<li><a href="#GetSystemSummary">Get System Summary</a></li>
+<li><a href="#GetAlertIds">Get Alert Ids</a></li>
+<li><a href="#GetSituationIds">Get Situation Ids</a></li>
+<li><a href="#GetActiveSituationIds">Get Active Situation Ids</a></li>
+<li><a href="#GetAlertDetails">Get Alert Details</a></li>
+<li><a href="#GetSituationAlertIds">Get Situation Alert Ids</a></li>
+<li><a href="#GetSituationDescription">Get Situation Description</a></li>
+<li><a href="#GetSituationDetails">Get Situation Details</a></li>
+<li><a href="#GetSituationHosts">Get Situation Hosts</a></li><!-- TOC END -->
         </ul>
         <h2>Configuration</h2>
         <div id="CreateConfiguration">
@@ -76,6 +86,22 @@
             </tr>
             <tr>
                 <td class="required">
+                    Moogsoft AIOPS Server Endpoint:
+                </td>
+                <td>
+                    For example https://servername.io
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
+                    Moogsoft API Name and version:
+                </td>
+                <td>
+                    For example graze/v1
+                </td>
+            </tr>
+            <tr>
+                <td class="required">
                     Credential:
                 </td>
                 <td>
@@ -105,8 +131,8 @@
                 <a name="GetSystemStatus" id="GetSystemStatus" />
                 <!-- GetSystemStatus METADATA BEGIN -->
             <h3>Get System Status</h3>
-            <p>blah blah</p>
-                <!-- GetSystemStatus METADATA END -->
+            <p>Performs a GET request that returns current system status information for all processes.</p>
+        <!-- GetSystemStatus METADATA END -->
                 <!-- GetSystemStatus BEGIN -->
             <table class="grid">
                 <thead>
@@ -116,9 +142,344 @@
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
                  </tbody>
             </table>
-                <!-- GetSystemStatus END -->
+        <!-- GetSystemStatus END -->
+            </div>
+            <div id="GetSystemSummary">
+                <a name="GetSystemSummary" id="GetSystemSummary" />
+                <!-- GetSystemSummary METADATA BEGIN -->
+            <h3>Get System Summary</h3>
+            <p>A GET request that returns a summary of current Alerts and Situations in Moogsoft AIOps.</p>
+        <!-- GetSystemSummary METADATA END -->
+                <!-- GetSystemSummary BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSystemSummary END -->
+            </div>
+            <div id="GetAlertIds">
+                <a name="GetAlertIds" id="GetAlertIds" />
+                <!-- GetAlertIds METADATA BEGIN -->
+            <h3>Get Alert Ids</h3>
+            <p>A GET request that returns the total number of Alerts, and a list of their Alert IDs for a specified Alert filter and a limit.</p>
+        <!-- GetAlertIds METADATA END -->
+                <!-- GetAlertIds BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Limit</td>
+                    <td>The max number of alert ids returned.</td>
+                </tr>
+                <tr>
+                    <td class="required">Query</td>
+                    <td>Use either a JSON or a SQL like query. For example  severity = 0, would get all the alerts whose severity = 0.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAlertIds END -->
+            </div>
+            <div id="GetSituationIds">
+                <a name="GetSituationIds" id="GetSituationIds" />
+                <!-- GetSituationIds METADATA BEGIN -->
+            <h3>Get Situation Ids</h3>
+            <p>A GET request that that returns the total number of Situations, and a list of their Situation IDs for a specified situation filter and a limit.</p>
+        <!-- GetSituationIds METADATA END -->
+                <!-- GetSituationIds BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Limit</td>
+                    <td>The max number of situation ids returned.</td>
+                </tr>
+                <tr>
+                    <td class="required">Query</td>
+                    <td>Use either a JSON or a SQL like query. For example  description = 'Web Situation' would get all Situations with that description as classified by the Cloud Team.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSituationIds END -->
+            </div>
+            <div id="GetActiveSituationIds">
+                <a name="GetActiveSituationIds" id="GetActiveSituationIds" />
+                <!-- GetActiveSituationIds METADATA BEGIN -->
+            <h3>Get Active Situation Ids</h3>
+            <p>A GET request that returns the total number of active Situations, and a list of their Situation IDs. Active Situations are those that are not Closed, Resolved or Dormant.</p>
+        <!-- GetActiveSituationIds METADATA END -->
+                <!-- GetActiveSituationIds BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetActiveSituationIds END -->
+            </div>
+            <div id="GetAlertDetails">
+                <a name="GetAlertDetails" id="GetAlertDetails" />
+                <!-- GetAlertDetails METADATA BEGIN -->
+            <h3>Get Alert Details</h3>
+            <p>A GET request that returns details (such as Description, Severity, etc.) of a specified Alert.</p>
+        <!-- GetAlertDetails METADATA END -->
+                <!-- GetAlertDetails BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Alert Id</td>
+                    <td>The Alert Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetAlertDetails END -->
+            </div>
+            <div id="GetSituationAlertIds">
+                <a name="GetSituationAlertIds" id="GetSituationAlertIds" />
+                <!-- GetSituationAlertIds METADATA BEGIN -->
+            <h3>Get Situation Alert Ids</h3>
+            <p>A GET request that returns the total number of Alerts, and a list of their Alert IDs for a specified Situation. This can be either all Alerts or just those Alerts unique to the Situation.</p>
+        <!-- GetSituationAlertIds METADATA END -->
+                <!-- GetSituationAlertIds BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Situation Id</td>
+                    <td>The Situation Id for which the Alert Ids are being requested.</td>
+                </tr>
+                <tr>
+                    <td>Unique Alerts Only</td>
+                    <td>Set this to true to get only Alerts unique to the Situation, else get all Alerts in the Situation.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSituationAlertIds END -->
+            </div>
+            <div id="GetSituationDescription">
+                <a name="GetSituationDescription" id="GetSituationDescription" />
+                <!-- GetSituationDescription METADATA BEGIN -->
+            <h3>Get Situation Description</h3>
+            <p>A GET request that returns the description for a specified Situation.</p>
+        <!-- GetSituationDescription METADATA END -->
+                <!-- GetSituationDescription BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Situation Id</td>
+                    <td>The Situation Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSituationDescription END -->
+            </div>
+            <div id="GetSituationDetails">
+                <a name="GetSituationDetails" id="GetSituationDetails" />
+                <!-- GetSituationDetails METADATA BEGIN -->
+            <h3>Get Situation Details</h3>
+            <p>A GET request that returns the details of a specified Situation.</p>
+        <!-- GetSituationDetails METADATA END -->
+                <!-- GetSituationDetails BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Situation Id</td>
+                    <td>The Situation Id.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSituationDetails END -->
+            </div>
+            <div id="GetSituationHosts">
+                <a name="GetSituationHosts" id="GetSituationHosts" />
+                <!-- GetSituationHosts METADATA BEGIN -->
+            <h3>Get Situation Hosts</h3>
+            <p>A GET request that returns a list of host names for a specified Situation, either for all the Alerts in the Situation or just for the unique Alerts.Hosts are the names (defined in the alerts.source field in the database) for the sources of Events.</p>
+        <!-- GetSituationHosts METADATA END -->
+                <!-- GetSituationHosts BEGIN -->
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>Parameter</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="required">Configuration Name</td>
+                    <td>Previously defined plugin configuration.</td>
+                </tr>
+                <tr>
+                    <td class="required">Situation Id</td>
+                    <td>The Situation Id for which the Alert Ids are being requested.</td>
+                </tr>
+                <tr>
+                    <td>Unique Alerts Only</td>
+                    <td>Set this to true to get only Alerts unique to the Situation, else use all Alerts in the Situation.</td>
+                </tr>
+                <tr>
+                    <td class="required">Property sheet name for results</td>
+                    <td>Results will be saved into this property/property sheet.</td>
+                </tr>
+                <tr>
+                    <td class="required">Result format</td>
+                    <td>Format to save request results.</td>
+                </tr>
+                 </tbody>
+            </table>
+        <!-- GetSituationHosts END -->
             </div>
 <!-- PROCEDURES END -->
     </div>

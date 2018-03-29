@@ -32,17 +32,17 @@
     </formElement>
     <formElement>
         <type>entry</type>
-        <label>Endpoint:</label>
+        <label>Moogsoft AIOPS Server Endpoint:</label>
         <property>endpoint</property>
         <required>1</required>
-        <documentation>yada yada</documentation>
+        <documentation>For example https://servername.io</documentation>
     </formElement>
     <formElement>
         <type>entry</type>
-        <label>Collection:</label>
+        <label>Moogsoft API Name and version:</label>
         <property>collection</property>
         <required>1</required>
-        <documentation>yada yada</documentation>
+        <documentation>For example graze/v1</documentation>
     </formElement>
     <formElement>
         <type>credential</type>
