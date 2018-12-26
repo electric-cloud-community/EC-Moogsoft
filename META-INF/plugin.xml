@@ -1,7 +1,7 @@
 <plugin>
   <key>EC-Moogsoft</key>
   <label>EC-Moogsoft</label>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <author>Electric Cloud</author>
   <authorUrl>Your company support url or email</authorUrl>
   <category>Utilities</category>
